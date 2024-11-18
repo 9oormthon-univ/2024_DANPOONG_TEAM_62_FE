@@ -17,7 +17,6 @@ const Header = () => {
 
     };
   
-    // 경로가 변경될 때 헤더 크기를 리셋 (무슨짓을해도 안됨 ㅠㅠ)
     useEffect(() => {
         setIsDropdownOpen(false);
     }, [location]);
