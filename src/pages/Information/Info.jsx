@@ -1,7 +1,7 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
 
-const Board = () => {
+const Info = () => {
     return (
         <div>
             <Outlet/>
@@ -9,4 +9,4 @@ const Board = () => {
     );
 };
 
-export default Board;
+export default Info;
