@@ -1,65 +1,96 @@
 import styled from "styled-components";
+import { b1, flexCenterColumn, h1, h2, h3 } from "../../global/common";
+import theme from "../../global/theme";
 
-const S={};
+const S = {};
 
-S.HeaderContainer = styled.header`
-  width: 100%;
-  height: ${(props) => (props.isHovered ? "265px" : "132px")};
-  background: ${(props) =>
-    props.isHovered
-      ? "linear-gradient(rgba(144, 238, 144, 1), rgba(144, 238, 144, 0.6))"
-      : "rgba(144, 238, 144, 1)"};
-  transition: height 0.3s linear, background 0.3s linear;
-  display: flex;
-  align-items: center;
-  padding: 0 24px;
-  position: relative;
+S.Background=styled.div`
+    width:100%;
+    height:100vh;
+    min-width: 1280px;
+    background-color: ${theme.PALETTE.background};
+    position: relative;
+`
+S.StyledHeader = styled.header`
+  
+    display: flex;
+    justify-content: space-between;
+    width:100%;
+    background-color: #94BC80;
+    padding: 0 25px;
+    height: 100px;
+    position: relative;
+    z-index: 999;
+    overflow: hidden;
+    transition: height 0.3s ease;
+    height: ${({ isdropdownopen }) => (isdropdownopen ? '230px' : '100px')};
+    &:hover {
+        
+        background: linear-gradient(to bottom, #94BC80 35%, rgba(148,188,128, 0.66));
+        
+    }
+
 `;
 
 S.Logo = styled.img`
-  height: 80px;
-  margin-right: 20px;
+   width:80%;
+   margin-top: 6px;
 `;
 
 S.Nav = styled.nav`
   display: flex;
   align-items: center;
-  gap: 40px;
+  gap: 70px; 
+  align-self: flex-start;
+  margin-top: 23px;
+ 
 `;
 
 S.NavItem = styled.div`
   position: relative;
-  color: white;
-  font-size: 18px;
-  font-weight: bold;
-  cursor: pointer;
+  
+  a {
+    text-decoration: none;
+    color: white;
+    ${h3}
+  }
 
-  &:hover .submenu {
-    display: flex;
+  &:hover a {
+    color: #717171;
   }
 `;
 
-S.SubMenu = styled.div`
-  display: none;
-  flex-direction: column;
+S.DropdownContainer = styled.div`
   position: absolute;
-  top: 40px;
-  background: white;
-  padding: 10px;
-  border-radius: 8px;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  top: 100px; 
+  width: 100%;
+  
+  display: flex;
+  padding: 0; 
+  box-sizing: border-box;
+`;
 
-  & div {
-    color: black;
-    padding: 5px 10px;
-    font-size: 16px;
-    white-space: nowrap;
+S.Dropdown = styled.div`
+  position: absolute; 
+  ${flexCenterColumn}
+  a {
+    padding-bottom: 17px;
+    color: white;
+    text-decoration: none;
+    ${b1}
 
     &:hover {
-      background: rgba(0, 0, 0, 0.1);
-      cursor: pointer;
+      color: #717171;
     }
   }
+
+  &.dropdown1 {
+    right:322px;
+  }
+
+  &.dropdown2 {
+    right:186px; 
+  } 
 `;
 
 S.ProfileImage = styled.img`
@@ -69,4 +100,9 @@ S.ProfileImage = styled.img`
   cursor: pointer;
 `;
 
+S.Layout=styled.div`
+    position: absolute;
+    top:100px;
+
+`
 export default S;
