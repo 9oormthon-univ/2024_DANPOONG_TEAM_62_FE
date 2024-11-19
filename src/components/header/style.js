@@ -6,10 +6,11 @@ const S = {};
 
 S.Background=styled.div`
     width:100%;
-    height:100vh;
+    height:auto;
     min-width: 1280px;
     background-color: ${theme.PALETTE.background};
     position: relative;
+    
 `
 S.StyledHeader = styled.header`
   
@@ -64,7 +65,6 @@ S.DropdownContainer = styled.div`
   position: absolute;
   top: 100px; 
   width: 100%;
-  
   display: flex;
   padding: 0; 
   box-sizing: border-box;
@@ -103,6 +103,8 @@ S.ProfileImage = styled.img`
 S.Layout=styled.div`
     position: absolute;
     top:100px;
-
+    width:100%;
+    overflow-x: hidden;
+    
 `
 export default S;
