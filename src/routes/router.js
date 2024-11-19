@@ -32,12 +32,10 @@ const router = createBrowserRouter([
             {
                 path: "/oauth",
                 element: <Login/>,
-                children:[
-                    {
-                        path: "/oauth/kakao/callback",
-                        element: <KaKaoRedirect/>,
-                    },
-                ]
+            },
+            {
+                path: "/oauth/kakao/callback",
+                element: <KaKaoRedirect/>,
             },
             {
                 path: "/serviceInfo",
