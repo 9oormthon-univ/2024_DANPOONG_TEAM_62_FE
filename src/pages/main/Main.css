@@ -1,71 +1,104 @@
 /* 전체 레이아웃 */
 body {
     font-family: Arial, sans-serif;
-    margin: 0;
+    flex-direction: column;
+    align-items: center; 
+  }
+  
+  /* 메인 컨테이너 */
+  .main-container {
+    width: 100vw;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 0; 
   }
   
   /* 검색 영역 */
   .searchArea {
+    width: 100%;
     text-align: center;
-    margin:20px 0;
+    margin: 20px 0; /* 위아래 여백 */
   }
   .searchArea h2 {
     text-align: center;
-    margin:100px 0;
-    padding-left: 600px;
+    margin: 100px 0;
+    /* padding-left: 600px; */
     font-size: 30px;
     font-weight: 600;
+    margin-bottom: 2cm;
   }
   
   .searchBar {
-    display:block;
+    display: flex;
     justify-content: center;
-    margin-top: -50px;
+    align-items: center;
+    margin-top: 10px;
+    width: 100%;
+    margin: 0 auto;
   }
   
   .searchBar input {
-    width: 50%;
-    padding: 10px;
+    flex: 1; /* 남은 공간을 입력 필드가 차지 */
+    max-width: 800px;
+    padding: 15px;
     font-size: 16px;
-    border: 0px;
-    border-radius: 15px;
+    border: none;
+    border-radius: 30px; /* 둥근 모서리 */
+    background-color: #d8e7d8; /* 연한 녹색 배경 */
+    box-shadow: inset 0 0 5px rgba(121, 121, 121, 0.1);
   }
   
   .searchBar button {
-    padding: 10px 20px;
-    margin-left: 5px;
-    font-size: 16px;
-    background-color: #9bc99b;
+    margin-left: -50px; /* 버튼 위치 조정 */
+    background: none;
     border: none;
-    border-radius: 5px;
     cursor: pointer;
+    font-size: 20px;
+    outline: none;
+    color: black; /* 아이콘 색상 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   
   /* 카드 스타일 */
   .card-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
+    gap: 40px; /* 카드들 간의 기본 간격 (가로 + 세로) */
+  row-gap: 60px; /* 카드들 간의 세로 간격 추가 */
+  width: 100%;
+    gap: 0px;
   }
   
   .card {
     background-color: white;
     border: 1px solid #ccc;
-    border-radius: 5px;
-    padding: 15px;
+    border-radius: 10px;
+    padding: 20px;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+  }
+
+  .card h3 {
+    font-size: 18px;
+    font-weight: 500;
+    color: #4f8a4f;
+    margin-bottom: 15px;
   }
   
   .card-footer {
-    margin-top: 10px;
+    margin-top: 30px;
     font-size: 14px;
+    margin-right: 100px;
     color: #888;
   }
   
   /* 게시판 섹션 */
   .board-section {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     margin: 20px;
   }
   
