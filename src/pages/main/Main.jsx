@@ -45,16 +45,16 @@ function BoardSection() {
 
   return (
     <div className="board-section">
+     <div className="board-column">
+      <h3 className="section-title">best</h3> {/* 섹션 제목에 클래스 추가 */}
+      <div className="card-grid">
+       {bestCards.map((card, index) => (
+        <Card key={index} {...card} />
+    ))}
+  </div>
+</div>
       <div className="board-column">
-        <h3>best</h3>
-        <div className="card-grid">
-          {bestCards.map((card, index) => (
-            <Card key={index} {...card} />
-          ))}
-        </div>
-      </div>
-      <div className="board-column">
-        <h3>최신 정보</h3>
+        <h3 className="section-title">최신 정보</h3>
         <div className="card-grid">
           {latestCards.map((card, index) => (
             <Card key={index} {...card} />
