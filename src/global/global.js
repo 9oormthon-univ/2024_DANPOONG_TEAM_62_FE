@@ -32,7 +32,7 @@ const GlobalStyle = createGlobalStyle`
         font-family: 'Pretendard';
         box-sizing: border-box;
         text-decoration: none;
-        color: rgba(0,0,0,1);
+        color: #6E6E6E;
         margin: 0;
         padding: 0;
         line-height: 1.5;
