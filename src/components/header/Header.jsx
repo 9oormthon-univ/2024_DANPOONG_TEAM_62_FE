@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { NavLink, Outlet, useLocation, useNavigate } from 'react-router-dom';
 import S from './style';
+import User from '../header-user/User';
 
 const Header = () => {
     
     const [isdropdownopen, setIsDropdownOpen] = useState(false);
+    const [isVisible, setIsVisible] = useState(false);
     const location = useLocation();
 
     const handleMouseEnter = () => {
@@ -16,16 +18,21 @@ const Header = () => {
       setIsDropdownOpen(false);
 
     };
-  
+    
+    const handleProfileClick = () => {
+        setIsVisible((prevState) => !prevState);
+    };
+
     useEffect(() => {
         setIsDropdownOpen(false);
+        setIsVisible(false);
     }, [location]);
 
     return (
         <>
             
         <S.Background>
-            <S.StyledHeader isdropdownopen={isdropdownopen} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+            <S.StyledHeader isdropdownopen={isdropdownopen} isvisible={isVisible} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
                 <NavLink to="/">
                     <S.Logo src={process.env.PUBLIC_URL + '/global/images/logo/logo.png'} alt="로고" />
                 </NavLink>
@@ -45,7 +52,9 @@ const Header = () => {
                     <S.ProfileImage
                         src={process.env.PUBLIC_URL + '/global/images/userProfile/profileImage.png'}
                         alt="프로필 이미지"
+                        onClick={handleProfileClick}
                     />
+                    
                 </S.Nav>
 
                 {/* 드롭다운 메뉴 */}
@@ -65,6 +74,10 @@ const Header = () => {
                 </S.DropdownContainer>
              
             </S.StyledHeader>
+            {isVisible && <S.UserBackground>
+                <User />
+            </S.UserBackground>}
+            
             <S.Layout>
                 <Outlet/>
             </S.Layout>

@@ -10,8 +10,25 @@ S.Background=styled.div`
     min-width: 1280px;
     background-color: ${theme.PALETTE.background};
     position: relative;
-    
+   
 `
+S.UserBackground = styled.div`
+    position: absolute; 
+    right: 10px; 
+    top: 110px; 
+    padding:20px;
+    background-color: white;
+    z-index: 999; 
+    width: 248px;
+    height: 183px;
+    border-radius: 15px;
+    border: 2px solid #94BC80;
+    ${flexCenterColumn}
+    justify-content: space-around;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+`;
+
+
 S.StyledHeader = styled.header`
   
     display: flex;
@@ -24,12 +41,13 @@ S.StyledHeader = styled.header`
     z-index: 999;
     overflow: hidden;
     transition: height 0.3s ease;
-    height: ${({ isdropdownopen }) => (isdropdownopen ? '230px' : '100px')};
     &:hover {
         
         background: linear-gradient(to bottom, #94BC80 35%, rgba(148,188,128, 0.66));
         
     }
+    height: ${({ isdropdownopen, isvisible }) =>
+        isdropdownopen ? '230px' : isvisible ? '100px' : '100px'};
 
 `;
 
