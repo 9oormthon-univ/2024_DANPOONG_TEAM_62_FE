@@ -68,7 +68,7 @@ function BoardSection() {
 // Main 컴포넌트
 const Main = () => {
   return (
-    <div>
+    <div className="main-container">
       <SearchArea />
       <BoardSection />
     </div>
