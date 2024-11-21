@@ -11,7 +11,7 @@ import Info from "../pages/Information/Info";
 import Education from "../pages/Information/Education/Education";
 import Policy from "../pages/Information/Policy/Policy";
 import Gemini from "../pages/Information/geminiApi/Gemini";
-import GenenralBoard from "../pages/board/GeneralBoard/GenenralBoard";
+import GeneralBoard from "../pages/board/GeneralBoard/GeneralBoard";
 import RegionalBoard from "../pages/board/RegionalBoard/RegionalBoard";
 import QA from "../pages/board/QA/QA";
 
@@ -47,7 +47,7 @@ const router = createBrowserRouter([
                 children:[
                     {
                         path: "/board/general",
-                        element: <GenenralBoard/>,
+                        element: <GeneralBoard/>,
                     },
                     {
                         path: "/board/regional",
