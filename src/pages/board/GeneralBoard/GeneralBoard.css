@@ -1,0 +1,137 @@
+/* 전체 컨테이너 */
+.general-board-container {
+  width: 100vw;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+/* 버튼과 검색창 포함 영역 */
+.action-wrapper {
+  display: flex;
+  justify-content: space-between; /* 버튼과 검색창을 가로로 배치 */
+  align-items: center; /* 세로 정렬 */
+  margin-top: 10px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+}
+
+/* 버튼 컨테이너 */
+.button-wrapper {
+  display: flex;
+  gap: 15px; /* 버튼 간 간격 */
+}
+
+/* 검색창 컨테이너 */
+.search-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* 버튼 스타일 */
+.board-button {
+  background-color: #ffffff;
+  color: #4f8a4f;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 15px 30px;
+  border: 2px solid #94bc80;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.board-button:hover {
+  background-color: #94bc80;
+  color: #ffffff;
+}
+
+/* 검색창 스타일 */
+.searchBar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+  width: 50vw;
+  margin: 0 auto;
+}
+
+.search-button {
+  padding: 10px 20px;
+  background-color: #94bc80;
+  border: none;
+  border-radius: 20px;
+  color: white;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.search-button:hover {
+  background-color: #4f8a4f;
+}
+
+/* 지역 버튼 영역 */
+.region-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.region-button {
+  background-color: #ffffff;
+  color: #94bc80;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 10px 20px;
+  border: 2px solid #94bc80;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.region-button:hover {
+  background-color: #94bc80;
+  color: #ffffff;
+}
+
+/* 게시글 목록 */
+.post-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.post-item {
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.post-item:hover {
+  background-color: #f0f0f0;
+}
+
+.post-title {
+  font-size: 18px;
+  font-weight: bold;
+  color: #4f8a4f;
+  margin-bottom: 10px;
+}
+
+.post-meta {
+  display: flex;
+  gap: 15px;
+  font-size: 14px;
+  color: #888;
+  margin-bottom: 10px;
+}
+
+.post-info {
+  font-size: 12px;
+  color: #aaa;
+}
