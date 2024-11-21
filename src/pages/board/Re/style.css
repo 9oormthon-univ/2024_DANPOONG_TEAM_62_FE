@@ -1,0 +1,27 @@
+/* 버튼 기본 스타일 */
+.board-button {
+    background-color: #ffffffd4;
+    width: 200px;
+    color: #94BC80;
+    font-size: 26px;
+    font-weight: bold;
+    padding: 15px 20px;
+    border: 2px solid #94bc80;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  /* 버튼 호버 효과 */
+  .board-button:hover {
+    background-color: #94bc80;
+    color: #ffffff;
+  }
+  
+  /* 활성화된 버튼 (현재 경로와 매칭되는 버튼) */
+  .board-button.active {
+    background-color: #94bc80;
+    color: #ffffff;
+    border-color: #4f8a4f; /* 더 짙은 초록색 테두리 */
+  }
+  
