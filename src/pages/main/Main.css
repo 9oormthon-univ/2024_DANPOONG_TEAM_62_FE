@@ -21,7 +21,7 @@ body {
   .searchArea {
     width: 100%;
     text-align: center;
-    margin: 20px 0; /* 위아래 여백 */
+    margin: 0px 0; /* 위아래 여백 */
   }
   .searchArea h2 {
     text-align: center;
@@ -71,7 +71,7 @@ body {
     grid-template-columns: repeat(2, 1fr);
     gap: 40px; /* 카드들 간의 기본 간격 (가로 + 세로) */
   row-gap: 60px; /* 카드들 간의 세로 간격 추가 */
-  width: 100%;
+  width: 30vw;
     gap: 0px;
   }
   
@@ -112,7 +112,7 @@ body {
     display: flex;
     justify-content: center;
     gap: 60px; 
-    margin: 20px;
+    margin: 40px;
   }
   
   .board-column h3 {
