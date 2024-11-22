@@ -4,12 +4,13 @@ import { useNavigate } from 'react-router-dom';
 
 const Education = () => {
     const YOUNG_FARMER_API_KEY= process.env.REACT_APP_YOUNG_FARMER_API_KEY;
-    const [eduLists, setEduLists] = useState([]); 
+    const [eduLists, setEduLists] = useState([]); //전체 목록
+    const [filteredEduLists, setFilteredEduLists] = useState([]); //검색 결과
+    const [searchTerm, setSearchTerm] = useState(''); // 검색어
     const [currentPage, setCurrentPage] = useState(0); // 현재 페이지
     const [totalPages, setTotalPages] = useState(1); // 전체 페이지 수
     const [currentPageGroup, setCurrentPageGroup] = useState(0); // 페이지 그룹
-    const pageSize = 10; // 한 페이지에 표시할 게시글 수
-    const pageGroupSize = 6; // 페이지 그룹 크기
+    const pageGroupSize = 5; // 페이지 그룹 크기
     const navigate=useNavigate();
     
     // 현재 날짜 가져오기
@@ -53,6 +54,7 @@ const Education = () => {
 
            
             setEduLists(filteredEduList);
+            setFilteredEduLists(filteredEduList);
             setTotalPages(6);
             console.log('필터링된 응답 데이터:', filteredEduList);
         } catch (error) {
@@ -64,6 +66,21 @@ const Education = () => {
         fetchEducationData(currentPage+1);
     }, [currentPage]);
 
+    //검색
+    const handleSearchChange = (e) => {
+        const value = e.target.value;
+        setSearchTerm(value);
+        const filtered = eduLists.filter((edu) => {
+            const title = edu.title || ''; // null일 경우 빈 문자열로 처리
+            const area2Nm = edu.area2Nm || ''; // null일 경우 빈 문자열로 처리
+    
+            return title.toLowerCase().includes(value.toLowerCase()) ||
+                   area2Nm.toLowerCase().includes(value.toLowerCase());
+        });
+        setFilteredEduLists(filtered);
+    };
+
+    //페이지네이션
     const handlePageChange = (newPage) => {
         setCurrentPage(newPage);
       };
@@ -85,45 +102,66 @@ const Education = () => {
       const startPage = currentPageGroup * pageGroupSize;
       const endPage = Math.min(startPage + pageGroupSize, totalPages);   
     
-      //게시글 상세보기
-    const goToEduDetail=(boardId)=>{
-        navigate(`/info/edu/detail?boardId=${boardId}`);
+      //글 클릭 시 상세보기 페이지
+    const goToEduDetail=(seq)=>{
+        navigate(`/info/edu/detail?seq=${seq}`);
     }
       return (
         <S.Container>
             <S.EduListContainer>
                 <S.Title>교육</S.Title>
                 
-                    <S.Table>
-                    <thead>
-                        <tr>
-                            <S.TableHeader>지역</S.TableHeader>
-                            <S.TableHeader>교육대상</S.TableHeader>
-                            <S.TableHeader>교육명</S.TableHeader>
-                            <S.TableHeader>신청마감일</S.TableHeader>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {eduLists.map((edu) => (
-                            <S.TableRow key={edu.seq} onClick={() => goToEduDetail(edu.seq)}>
-                                <S.TableData>{edu.area2Nm}</S.TableData>
-                                <S.TableData>{edu.eduTarget}</S.TableData>
-                                <S.TableData>{edu.title}</S.TableData>
-                                <S.TableData>
-                                    {edu.applEdDt}{" "}
-                                    <span>
-                                        (D-{Math.ceil(
-                                            (new Date(normalizeDate(edu.applEdDt, true)) - new Date()) /
-                                            (1000 * 60 * 60 * 24)
-                                        )})
-                                    </span>
-                                </S.TableData>
-                            </S.TableRow>
-                        ))}
-                    </tbody>
-                </S.Table>
-            
+                {/* 검색창 */}
+                <S.SearchBarContainer>
+                    <S.SearchInput
+                        type="text"
+                        value={searchTerm}
+                        onChange={handleSearchChange}
+                        placeholder=" 교육명 또는 지역을 입력하세요."
+                    />
+                    <S.SearchButton>
+                        <img src={process.env.PUBLIC_URL + '/global/images/icons/SearchIcon.png'} alt="검색" />
+                    </S.SearchButton>
+                </S.SearchBarContainer>
 
+                    <S.Table>
+                        <thead >
+                            <tr >
+                                <S.TableHeader style={{width:'8%'}}>지역</S.TableHeader>
+                                <S.TableHeader>교육대상</S.TableHeader>
+                                <S.TableHeader style={{width:'50%'}}>교육명</S.TableHeader>
+                                <S.TableHeader style={{width:'20%'}}>신청마감일</S.TableHeader>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {filteredEduLists.map((edu) => (
+                                <S.TableRow key={edu.seq} onClick={() => goToEduDetail(edu.seq)}>
+                                    <S.TableData>{edu.area2Nm}</S.TableData>
+                                    <S.TableData>{edu.eduTarget}</S.TableData>
+                                    <S.TableData>{edu.title}</S.TableData>
+                                    <S.TableData>
+                                        {edu.applEdDt}{" "}
+                                        <span>
+                                            (D-{Math.ceil(
+                                                (new Date(normalizeDate(edu.applEdDt, true)) - new Date()) /
+                                                (1000 * 60 * 60 * 24)
+                                            )})
+                                        </span>
+                                    </S.TableData>
+                                </S.TableRow> 
+                            ))}
+                            {/* 빈 행 추가 */}
+            {Array.from({ length: Math.max(0, 10 - filteredEduLists.length) }).map((_, index) => (
+                <S.TableRow key={`empty-${index}`}>
+                    <S.TableData>&nbsp;</S.TableData>
+                    <S.TableData>&nbsp;</S.TableData>
+                    <S.TableData>&nbsp;</S.TableData>
+                    <S.TableData>&nbsp;</S.TableData>
+                </S.TableRow>
+            ))}
+                        </tbody>
+                    </S.Table>
+    
             {/* 페이지네이션 */}
             <S.PaginationContainer>
                     <S.PageButton onClick={handlePrevPageGroup} disabled={currentPageGroup === 0}>
