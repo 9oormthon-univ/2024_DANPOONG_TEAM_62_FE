@@ -1,0 +1,118 @@
+/* 전체 컨테이너 */
+.write-post-container {
+    width: 100vw;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    border-radius: 10px;
+  }
+  
+  /* 제목 스타일 */
+  .write-post-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #89b089;
+    text-align: center;
+    margin-bottom: 40px;
+    margin-top: 40px;
+  }
+  
+  /* 작성 폼 */
+  .write-post-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  /* 제목 입력 */
+  .post-title-input {
+    width: 100%;
+    padding: 20px;
+    font-size: 16px;
+    border: 1px solid #ffffffd4;
+    background-color: #ffffffd4;
+    border-radius: 10px;
+  }
+  
+  /* 내용 입력 */
+  .post-content-input {
+    width: 100%;
+    height: 350px;
+    padding: 20px;
+    font-size: 16px;
+    border: 1px solid #ffffffd4;
+    background-color: #ffffffd4;
+    border-radius: 10px;
+    resize: none;
+  }
+  
+  /* 파일 업로드 */
+  .file-upload {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #4f8a4f;
+    font-size: 14px;
+    cursor: pointer;
+  }
+  
+  .file-upload input {
+    display: none;
+  }
+  
+  /* 액션 버튼 */
+  .write-post-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+  }
+  
+  /* 취소 버튼 */
+  .cancel-button {
+    background-color: #ffffff;
+    color: #94bc80;
+    border: 2px solid #94bc80;
+    border-radius: 10px;
+    padding: 10px 20px;
+    font-size: 14px;
+    cursor: pointer;
+  }
+  
+  .cancel-button:hover {
+    background-color: #94bc80;
+    color: #ffffff;
+  }
+  
+  /* 등록 버튼 */
+  .submit-button {
+    background-color: #94bc80;
+    color: #ffffff;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 20px;
+    font-size: 14px;
+    cursor: pointer;
+  }
+  
+  .submit-button:hover {
+    background-color: #4f8a4f;
+  }
+  
+  /* 카테고리 선택 드롭다운 */
+.category-select,
+.subcategory-select {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ffffffd4;
+  background-color: #ffffffd4;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+/* 카테고리 선택 드롭다운 - 포커스 시 */
+.category-select:focus,
+.subcategory-select:focus {
+  border-color: #94bc80;
+  outline: none;
+}

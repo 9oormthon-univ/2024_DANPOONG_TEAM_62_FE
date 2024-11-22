@@ -1,0 +1,102 @@
+/* 전체 컨테이너 */
+.qa-container {
+    width: 100vw;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+
+/* 버튼만 포함하는 영역 */
+.action-wrapper {
+    display: flex;
+    justify-content: flex-start; /* 왼쪽 정렬 */
+    align-items: center;
+    margin-bottom: 20px;
+    padding-left: 20px; /* 버튼과 페이지 좌측 간격 추가 */
+}
+
+/* 버튼 스타일 */
+.board-button {
+    background-color: #ffffff;
+    width: 200px;
+    color: #94BC80;
+    font-size: 22px;
+    font-weight: bold;
+    padding: 15px 30px;
+    border: 2px solid #94bc80;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-right: 15px; /* 버튼 간 간격 추가 */
+}
+
+.board-button:hover {
+    background-color: #94bc80;
+    color: #ffffff;
+}
+
+/* 활성화된 버튼 스타일 */
+.board-button.active {
+    background-color: #94bc80;
+    color: #ffffff;
+    border-color: #4f8a4f; /* 짙은 초록 테두리 */
+}
+
+/* QnA 메인 컨텐츠 */
+.qa-content {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.qa-title {
+    font-size: 36px;
+    font-weight: bold;
+    color: #4f8a4f;
+    margin-bottom: 20px;
+}
+
+.qa-subtitle {
+    font-size: 18px;
+    color: #888888;
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+.create-post-button {
+    background-color: #ffffff;
+    color: #94bc80;
+    border: 2px solid #94bc80;
+    border-radius: 20px;
+    padding: 10px 30px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-bottom: 40px;
+}
+
+.create-post-button:hover {
+    background-color: #94bc80;
+    color: white;
+}
+
+/* QnA 목록 */
+.qa-list {
+    margin-top: 20px;
+    text-align: left;
+    display: inline-block; /* 목록 정렬 */
+}
+
+.qa-question {
+    font-size: 18px;
+    font-weight: bold;
+    color: #4f8a4f;
+    margin-bottom: 15px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.qa-question:hover {
+    text-decoration: underline;
+    color: #94bc80;
+}

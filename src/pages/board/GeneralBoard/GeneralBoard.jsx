@@ -1,40 +1,47 @@
-import React from 'react';
-import './GeneralBoard.css';
+import React, { useState, useEffect } from "react";
+import { Link, useNavigate, useLocation } from "react-router-dom";
+import "./GeneralBoard.css";
 
 const GeneralBoard = () => {
-    const posts = [
-        { title: "자유게시판 게시글 1", likes: 50, comments: 20, date: "2024-11-17", user: "user1" },
-        { title: "자유게시판 게시글 2", likes: 80, comments: 35, date: "2024-11-18", user: "user2" },
-        { title: "자유게시판 게시글 3", likes: 100, comments: 50, date: "2024-11-19", user: "user3" },
-        { title: "자유게시판 게시글 4", likes: 20, comments: 5, date: "2024-11-20", user: "user4" },
-    ];
-    
+    const location = useLocation(); // 현재 경로 확인
+    const navigate = useNavigate(); // 
+
+    const posts = Array.from({ length: 8 }, (_, index) => ({
+        title: `자유게시판 게시글 ${index + 1}`,
+        likes: Math.floor(Math.random() * 100),
+        comments: Math.floor(Math.random() * 50),
+        date: `2024-11-${17 + index}`,
+        user: `user${index + 1}`,
+    }));
+
     return (
         <div className="general-board-container">
             {/* 버튼과 검색창을 포함하는 컨테이너 */}
             <div className="action-wrapper">
                 <div className="button-wrapper">
-                    <button className="board-button">지역별 게시판</button>
-                    <button className="board-button">자유게시판</button>
-                    <button className="board-button">QnA</button>
+                    <Link
+                        to="/board/regional"
+                        className={`board-button ${location.pathname === "/board/regional" ? "active" : ""}`}
+                    >
+                        지역별 게시판
+                    </Link>
+                    <Link
+                        to="/board/general"
+                        className={`board-button ${location.pathname === "/board/general" ? "active" : ""}`}
+                    >
+                        자유게시판
+                    </Link>
+                    <Link
+                        to="/board/q-a"
+                        className={`board-button ${location.pathname === "/board/q-a" ? "active" : ""}`}
+                    >
+                        QnA
+                    </Link>
                 </div>
                 <div className="searchBar">
                     <input type="text" className="search-bar" placeholder="검색어를 입력하세요" />
                     <button className="search-button">🔍</button>
                 </div>
-            </div>
-
-            {/* 지역 버튼 영역 */}
-            <div className="region-wrapper">
-                <button className="region-button">경기도</button>
-                <button className="region-button">강원도</button>
-                <button className="region-button">충청북도</button>
-                <button className="region-button">충청남도</button>
-                <button className="region-button">경상북도</button>
-                <button className="region-button">경상남도</button>
-                <button className="region-button">전라북도</button>
-                <button className="region-button">전라남도</button>
-                <button className="region-button">제주도</button>
             </div>
 
             {/* 게시글 목록 */}
@@ -52,6 +59,15 @@ const GeneralBoard = () => {
                     </div>
                 ))}
             </div>
+
+            {/* 푸터 영역 */}
+            <footer className="footer">
+                <button className="create-post-button"
+                    onClick={() => navigate("/board/write", { state: { category: "자유게시판" } })}>
+                    글 작성하기
+                </button>
+            </footer>
+
         </div>
     );
 };
