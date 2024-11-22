@@ -21,6 +21,10 @@ S.TitleText=styled.div`
     ${h3}
     align-self: flex-start;
     line-height: 1.3;
+    div{
+        color:#222222;
+    }
+    
 `
 S.CategoryContainer=styled.div`
     width:100%;
