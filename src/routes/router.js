@@ -15,6 +15,7 @@ import GeneralBoard from "../pages/board/GeneralBoard/GeneralBoard";
 import RegionalBoard from "../pages/board/RegionalBoard/RegionalBoard";
 import QA from "../pages/board/QA/QA";
 import Writing from "../pages/board/Writing/Writing";
+import PostDetail from '../pages/board/PostDetail/PostDetail';
 
 //추후에 로그인 하지 않으면 접근 할 수 없게 추가할 것 (글 작성, 댓글 작성 등)
 // const ProtectedRoute = ({ element }) => {
@@ -61,6 +62,10 @@ const router = createBrowserRouter([
                     {
                         path: "/board/write",
                         element: <Writing/>,
+                    },
+                    {
+                        path: "/board/post-detail",
+                        element: <PostDetail/>,
                     },
                 ]
             },
