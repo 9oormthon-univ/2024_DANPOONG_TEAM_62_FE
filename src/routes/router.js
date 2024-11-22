@@ -14,6 +14,8 @@ import Gemini from "../pages/Information/geminiApi/Gemini";
 import GeneralBoard from "../pages/board/GeneralBoard/GeneralBoard";
 import RegionalBoard from "../pages/board/RegionalBoard/RegionalBoard";
 import QA from "../pages/board/QA/QA";
+import EduDetail from "../pages/Information/Education/detail/EduDetail";
+import PolicyDetail from "../pages/Information/Policy/detail/PolicyDetail";
 import Writing from "../pages/board/Writing/Writing";
 import PostDetail from '../pages/board/PostDetail/PostDetail';
 
@@ -78,8 +80,16 @@ const router = createBrowserRouter([
                         element: <Education/>,
                     },
                     {
+                        path: "/info/edu/detail",
+                        element: <EduDetail/>,
+                    },
+                    {
                         path: "/info/policy",
                         element: <Policy/>,
+                    },
+                    {
+                        path: "/info/policy/detail",
+                        element: <PolicyDetail/>
                     },
                     {
                         path: "/info/chat",
