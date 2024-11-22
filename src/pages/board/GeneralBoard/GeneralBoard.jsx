@@ -3,16 +3,23 @@ import { Link, useNavigate, useLocation } from "react-router-dom";
 import "./GeneralBoard.css";
 
 const GeneralBoard = () => {
-    const location = useLocation(); // 현재 경로 확인
-    const navigate = useNavigate(); // 
+    const location = useLocation();
+    const navigate = useNavigate();
 
     const posts = Array.from({ length: 8 }, (_, index) => ({
+        id: index + 1, // 게시글 ID 추가
         title: `자유게시판 게시글 ${index + 1}`,
+        content: `이것은 자유게시판 게시글 ${index + 1}의 내용입니다.`,
         likes: Math.floor(Math.random() * 100),
         comments: Math.floor(Math.random() * 50),
         date: `2024-11-${17 + index}`,
         user: `user${index + 1}`,
     }));
+
+    // 게시글 클릭 핸들러
+    const handlePostClick = (post) => {
+        navigate("/board/post-detail", { state: { post } });
+    };
 
     return (
         <div className="general-board-container">
@@ -46,8 +53,13 @@ const GeneralBoard = () => {
 
             {/* 게시글 목록 */}
             <div className="post-list">
-                {posts.map((post, index) => (
-                    <div key={index} className="post-item">
+                {posts.map((post) => (
+                    <div
+                        key={post.id}
+                        className="post-item"
+                        onClick={() => handlePostClick(post)}
+                        style={{ cursor: "pointer" }} // 커서 모양 변경
+                    >
                         <h3 className="post-title">{post.title}</h3>
                         <div className="post-meta">
                             <span>❤️ {post.likes}</span>
@@ -62,12 +74,13 @@ const GeneralBoard = () => {
 
             {/* 푸터 영역 */}
             <footer className="footer">
-                <button className="create-post-button"
-                    onClick={() => navigate("/board/write", { state: { category: "자유게시판" } })}>
+                <button
+                    className="create-post-button"
+                    onClick={() => navigate("/board/write", { state: { category: "자유게시판" } })}
+                >
                     글 작성하기
                 </button>
             </footer>
-
         </div>
     );
 };

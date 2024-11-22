@@ -45,20 +45,20 @@
 /* QnA 메인 컨텐츠 */
 .qa-content {
     text-align: center;
-    margin-top: 40px;
+    margin-top: 80px;
 }
 
 .qa-title {
-    font-size: 36px;
+    font-size: 50px;
     font-weight: bold;
     color: #4f8a4f;
-    margin-bottom: 20px;
+    margin-bottom: 40px;
 }
 
 .qa-subtitle {
-    font-size: 18px;
+    font-size: 23px;
     color: #888888;
-    margin-bottom: 30px;
+    margin-bottom: 40px;
     line-height: 1.6;
 }
 
@@ -84,12 +84,12 @@
 .qa-list {
     margin-top: 20px;
     text-align: left;
-    display: inline-block; /* 목록 정렬 */
+    margin-left: 100px;
 }
 
 .qa-question {
-    font-size: 18px;
-    font-weight: bold;
+    font-size: 20px;
+    font-weight: 400;
     color: #4f8a4f;
     margin-bottom: 15px;
     cursor: pointer;
@@ -99,4 +99,24 @@
 .qa-question:hover {
     text-decoration: underline;
     color: #94bc80;
+}
+
+/* QnA 항목 */
+.qa-item {
+    margin-bottom: 20px;
+}
+
+/* QnA 답변 스타일 */
+.qa-answer {
+    font-size: 18px;
+    color:#6E6E6E;
+    margin-top: 10px;
+    line-height: 1.6;
+    padding-left: 20px;
+    border-left: 3px solid #94bc80;
+}
+
+.bold-text {
+    font-weight: 700;
+    color:#555555;
 }

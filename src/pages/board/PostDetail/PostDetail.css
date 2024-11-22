@@ -1,0 +1,56 @@
+/* 전체 컨테이너 */
+.post-detail-container {
+    width: 90vw; /* 가로 크기를 화면의 80%로 설정 */
+    height: 70vh; /* 세로 크기를 화면 높이의 70%로 설정 */
+    margin: 0 auto; /* 화면 가운데 정렬 */
+    background-color: #ffffffbd; /* 배경색 */
+    border-radius: 20px; /* 모서리 둥글게 */
+    padding: 40px; /* 내부 여백 */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* 내용과 하단 영역 간격 유지 */
+}
+
+/* 게시글 제목 스타일 */
+.post-title {
+    font-size: 32px; /* 더 큰 글씨 크기 */
+    font-weight: bold;
+    color: #4f8a4f; /* 초록색 */
+    margin-bottom: 20px; /* 아래 여백 */
+}
+
+/* 게시글 내용 스타일 */
+.post-content {
+    font-size: 20px; /* 더 큰 글씨 크기 */
+    line-height: 1.8; /* 줄 간격 */
+    color: #666666; /* 회색 */
+    margin-bottom: 40px; /* 하단 여백 */
+    flex-grow: 1; /* 내용이 늘어나면 비율 조정 */
+}
+
+/* 하단 영역 스타일 */
+.post-footer {
+    display: flex;
+    justify-content: flex-end; /* 오른쪽 정렬 */
+    align-items: center;
+}
+
+/* 댓글과 좋아요 스타일 */
+.post-stats {
+    display: flex;
+    gap: 20px; /* 아이템 간 간격 */
+}
+
+.comments,
+.likes {
+    font-size: 18px; /* 더 큰 글씨 크기 */
+    color: #999999; /* 연한 회색 */
+    display: flex;
+    align-items: center;
+    gap: 5px; /* 아이콘과 텍스트 간 간격 */
+}
+
+.likes {
+    color: #e57373; /* 빨간색 */
+}
