@@ -3,7 +3,8 @@ import S from './style';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 const PolicyDetail = () => {
-    const YOUNG_FARMER_API_KEY= process.env.REACT_APP_YOUNG_FARMER_API_KEY;
+    // const YOUNG_FARMER_API_KEY= process.env.REACT_APP_YOUNG_FARMER_API_KEY;
+    const YOUNG_FARMER_API_KEY="PdNrP5LqaL3z2dqsOzW9yUG%2BFGiTXklB3wanUqSbFLUB5hLJLHGxF%2BtpnLdPmL1p%2BQOzkikq9w3VlwtSySFwIA%3D%3D";
     const [eduDetail, setEduDetail] = useState(null);
     const location = useLocation();
     const queryParams = new URLSearchParams(location.search);
