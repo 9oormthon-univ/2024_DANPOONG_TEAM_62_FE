@@ -3,20 +3,29 @@ body {
 }
 
 /* 게시글 컨테이너 */
+/* 게시글 컨테이너 */
 .post-detail-container {
     width: 90vw;
-    height: 30vw;
     max-width: 800px;
     margin: 0 auto;
-    margin-top: 60px;
+    margin-top: 30px;
     background-color: #ffffffbd;
     border-radius: 20px;
     padding: 40px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
+    gap: 20px; /* 내부 요소 간격 */
+}
+
+.post-content-container {
+    position: relative; /* 상대 위치 */
+    margin-top: 20px; /* 부모 컨테이너와 간격 추가 */
+    display: flex;
+    flex-direction: column;
     gap: 20px;
 }
+
 .comment-section-container
 {
     width: 90vw;
@@ -36,7 +45,6 @@ body {
     display: flex;
     flex-direction: column;
     gap: 20px;
-    flex-grow: 1; /* 내용이 비어있어도 footer를 아래로 밀어냄 */
 }
 
 .post-title {
@@ -57,7 +65,6 @@ body {
     justify-content: space-between; /* 좌우 정렬 */
     align-items: center;
     font-size: 16px;
-    margin-top: 200px;
 }
 
 /* 작성자와 작성일 */
