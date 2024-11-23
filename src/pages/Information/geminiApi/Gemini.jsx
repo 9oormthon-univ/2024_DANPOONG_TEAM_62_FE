@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { useLocation } from "react-router-dom";
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import S from './style';
 import ReactMarkdown from "react-markdown";
@@ -8,6 +9,7 @@ const genAI = new GoogleGenerativeAI(API_KEY);
 
 const Gemini = () => {
 
+    const location = useLocation();
     const [messages, setMessages] = useState([]); // 대화 저장
     const [input, setInput] = useState(""); // 현재 입력 중인 질문
     const [loading, setLoading] = useState(false); // 로딩 상태
@@ -20,6 +22,14 @@ const Gemini = () => {
         chatContainerRef.current.scrollTop = chatContainerRef.current.scrollHeight;
         }
     }, [messages]);
+
+    // 초기 검색어로 질문 처리
+  useEffect(() => {
+    if (location.state?.searchTerm) {
+      generateText(location.state.searchTerm);
+    }
+  }, [location.state?.searchTerm]);
+
 
     const generateText = async () => {
         if (!input.trim()) {  

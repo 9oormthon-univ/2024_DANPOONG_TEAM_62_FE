@@ -72,6 +72,7 @@ body {
 }
 
 .post-date {
+    font-style: italic;
     color: #999;
 }
 
@@ -98,15 +99,46 @@ body {
 }
 
 .comments-count {
-    color: #94bc80; /* 초록색 */
+    color: #4caf50; /* 초록색 */
     font-weight: bold;
 }
-.add-comment-button {
-    padding: 10px 20px;
-    background-color: #94bc80; /* 기존 배경색 */
-    color: #ffffff; /* 기존 글자색 */
-    border: none;
-    border-radius: 10px;
-    font-size: 14px;
+
+.edit-buttons {
+    margin-top: 10px;
+}
+
+.edit-button,
+.save-button,
+.cancel-button {
+    padding: 8px 16px;
+    margin: 5px;
+    border-radius: 5px;
     cursor: pointer;
+}
+
+.edit-button {
+    background-color: #007bff;
+    color: white;
+}
+
+.save-button {
+    background-color: #28a745;
+    color: white;
+}
+
+.cancel-button {
+    background-color: #dc3545;
+    color: white;
+}
+
+.edit-button:hover {
+    background-color: #0056b3;
+}
+
+.save-button:hover {
+    background-color: #218838;
+}
+
+.cancel-button:hover {
+    background-color: #c82333;
 }
