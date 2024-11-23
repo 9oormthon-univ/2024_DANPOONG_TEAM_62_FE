@@ -1,8 +1,14 @@
+body {
+    background-color: #F1ECE0; /* 예: 흰색 */
+    margin: 0; /* 기본 여백 제거 */
+    padding: 0; /* 기본 여백 제거 */
+  }
 /* 전체 컨테이너 */
 .post-detail-container {
     width: 90vw; /* 가로 크기를 화면의 80%로 설정 */
     height: 70vh; /* 세로 크기를 화면 높이의 70%로 설정 */
     margin: 0 auto; /* 화면 가운데 정렬 */
+    margin-top: 60px;
     background-color: #ffffffbd; /* 배경색 */
     border-radius: 20px; /* 모서리 둥글게 */
     padding: 40px; /* 내부 여백 */
