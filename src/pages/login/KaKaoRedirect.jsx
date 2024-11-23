@@ -6,8 +6,7 @@ const KaKaoRedirect = () => {
     const navigate = useNavigate();
     const location = useLocation();
     const code = new URL(window.location.href).searchParams.get("code");
-    console.log(code);
-    console.log("Extracted Code:", code);
+    
     useEffect(() => {
         const handleKakaoLogin = async () => {
             try {
