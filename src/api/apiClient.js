@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const apiClient = axios.create({
-    baseURL: 'http://43.200.106.68', // 서버 주소
+    baseURL: 'http://43.202.0.199:8080', // 서버 주소
     headers: {
         'Content-Type': 'application/json',
     },

@@ -1,32 +1,44 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import "./GeneralBoard.css";
+import apiClient from "../../../api/apiClient";
 
 const GeneralBoard = () => {
     const location = useLocation();
     const navigate = useNavigate();
-
-    // 게시글 데이터
-    const initialPosts = Array.from({ length: 8 }, (_, index) => ({
-        id: index + 1, // 게시글 ID 추가
-        title: `자유게시판 게시글 ${index + 1}`,
-        content: `이것은 자유게시판 게시글 ${index + 1}의 내용입니다.`,
-        likes: Math.floor(Math.random() * 100),
-        comments: Math.floor(Math.random() * 50),
-        date: `2024-11-${17 + index}`,
-        user: `user${index + 1}`,
-    }));
-
-    const [posts, setPosts] = useState(initialPosts); // 전체 게시글 데이터
+    const [posts, setPosts] = useState([]); // 전체 게시글 데이터
     const [searchTerm, setSearchTerm] = useState(""); // 검색어 상태
 
-    // 검색어가 변경될 때마다 게시글 필터링
+     // 서버에서 게시글 가져오기
+     const fetchPosts = async () => {
+        try {
+            const response = await apiClient.get("/post/latest");
+            console.log(response);
+            const fetchedPosts = response.data; // 서버 응답 데이터
+            setPosts(fetchedPosts); // 상태에 저장
+        } catch (error) {
+            console.error("Error fetching posts:", error);
+            setPosts([]); // 에러 시 빈 배열로 설정
+        }
+    };
+
+    // 페이지가 로드될 때 서버에서 게시글 데이터를 가져옴
     useEffect(() => {
-        const filteredPosts = initialPosts.filter((post) =>
-            post.title.toLowerCase().includes(searchTerm.toLowerCase())
-        );
-        setPosts(filteredPosts);
-    }, [searchTerm]); // searchTerm이 변경될 때마다 실행
+        fetchPosts();
+    }, []);
+    
+    
+     // 검색어에 따라 게시글 필터링
+     const filteredPosts = posts.filter((post) =>
+     post.title.toLowerCase().includes(searchTerm.toLowerCase())
+ );
+    // 검색어가 변경될 때마다 게시글 필터링
+    // useEffect(() => {
+    //     const filteredPosts = initialPosts.filter((post) =>
+    //         post.title.toLowerCase().includes(searchTerm.toLowerCase())
+    //     );
+    //     setPosts(filteredPosts);
+    // }, [searchTerm]);
 
     // 게시글 클릭 핸들러
     const handlePostClick = (post) => {
@@ -70,10 +82,10 @@ const GeneralBoard = () => {
 
             {/* 게시글 목록 */}
             <div className="post-list">
-                {posts.length > 0 ? (
-                    posts.map((post) => (
+                {filteredPosts.length > 0 ? (
+                    filteredPosts.map((post) => (
                         <div
-                            key={post.id}
+                            key={post.postId}
                             className="post-item"
                             onClick={() => handlePostClick(post)}
                             style={{ cursor: "pointer" }} // 커서 모양 변경
@@ -84,7 +96,7 @@ const GeneralBoard = () => {
                                 <span>💬 {post.comments}</span>
                             </div>
                             <div className="post-info">
-                                작성일 : {post.date} | 작성자 : {post.user}
+                                작성일 : {new Date(post.createdAt).toLocaleDateString("ko-KR")} | 작성자 : {post.userId}
                             </div>
                         </div>
                     ))

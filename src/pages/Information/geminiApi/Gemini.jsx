@@ -24,21 +24,22 @@ const Gemini = () => {
     }, [messages]);
 
     // 초기 검색어로 질문 처리
-  useEffect(() => {
-    if (location.state?.searchTerm) {
-      generateText(location.state.searchTerm);
-    }
-  }, [location.state?.searchTerm]);
+    useEffect(() => {
+        if (location.state?.searchTerm) {
+          const initialQuestion = location.state.searchTerm;
+          setMessages((prev) => [...prev, { role: "user", content: initialQuestion }]);
+          handleGenerateText(initialQuestion); // 전달된 검색어로 질문 생성
+        }
+      }, [location.state?.searchTerm]);
 
-
-    const generateText = async () => {
-        if (!input.trim()) {  
-            alert("질문을 입력해주세요.");
-            return;  
+      const handleGenerateText = async (question) => {
+        if (!question.trim()) {
+          alert("질문을 입력해주세요.");
+          return;
         }
     
         // 사용자 입력 메시지 추가
-        const userMessage = { role: "user", content: input };
+        const userMessage = { role: "user", content: question };
         const updatedMessages = [...messages, userMessage];
         setMessages(updatedMessages);
         setInput(""); 
@@ -117,6 +118,10 @@ const Gemini = () => {
         }
       };
 
+      const handleSend = () => {
+        handleGenerateText(input); // 현재 입력된 질문으로 호출
+      };
+
     return (
         <S.Container>
             <S.TitleText>
@@ -153,7 +158,7 @@ const Gemini = () => {
                     value={input}
                     onChange={(e) => setInput(e.target.value)}
                 />
-                    <S.SendButton onClick={generateText} disabled={loading}>
+                    <S.SendButton onClick={handleSend} disabled={loading}>
                         {loading ? "답변 생성 중..." : "전송"}
                     </S.SendButton>
             </S.ChatInputContainer>

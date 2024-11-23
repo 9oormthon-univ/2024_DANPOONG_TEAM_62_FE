@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import "./RegionalBoard.css";
+import apiClient from "../../../api/apiClient";
 
 const RegionalBoard = () => {
     const location = useLocation();
@@ -11,32 +12,53 @@ const RegionalBoard = () => {
     const [searchTerm, setSearchTerm] = useState(""); // 검색어 상태
 
     // 게시글 데이터
-    const initialPosts = [
-        { title: "경기도 게시글 1", likes: 50, comments: 20, date: "2024-11-17", user: "user1", region: "경기도" },
-        { title: "강원도 게시글 1", likes: 80, comments: 35, date: "2024-11-18", user: "user2", region: "강원도" },
-        { title: "충청북도 게시글 1", likes: 100, comments: 50, date: "2024-11-19", user: "user3", region: "충청북도" },
-        { title: "경기도 게시글 2", likes: 20, comments: 5, date: "2024-11-20", user: "user4", region: "경기도" },
-    ];
+    const [posts, setPosts] = useState([]);
+    const [filteredPosts, setFilteredPosts] = useState([]);
 
-    const [filteredPosts, setFilteredPosts] = useState(initialPosts);
+    // 서버에서 게시글 가져오기
+    const fetchPosts = async (region) => {
+        try {
+            const endpoint = region === "전체" ? "/region/posts" : `/region/${region}`;
+            const response = await apiClient.get(endpoint);
+            console.log(response);
+            setPosts(response.data); // 서버에서 받아온 게시글 데이터 설정
+        } catch (error) {
+            console.error(`Error fetching posts for region ${region}:`, error);
+            setPosts([]); // 에러 시 빈 배열로 설정
+        }
+    };
 
-    // 검색어 또는 지역이 변경될 때 게시글 필터링
+    // 페이지가 로드될 때 전체 게시글 데이터를 가져옴
     useEffect(() => {
-        const regionFilteredPosts =
-            activeRegion === "전체"
-                ? initialPosts
-                : initialPosts.filter((post) => post.region === activeRegion);
+        fetchPosts("전체"); // 초기에는 전체 게시글을 가져옴
+    }, []);
 
-        const searchFilteredPosts = regionFilteredPosts.filter((post) =>
+    // 지역 또는 검색어가 변경될 때 게시글 필터링
+    useEffect(() => {
+        const searchFilteredPosts = posts.filter((post) =>
             post.title.toLowerCase().includes(searchTerm.toLowerCase())
         );
-
         setFilteredPosts(searchFilteredPosts);
-    }, [activeRegion, searchTerm]); // activeRegion 또는 searchTerm 변경 시 실행
+    }, [searchTerm, posts]); 
+
+    // 검색어 또는 지역이 변경될 때 게시글 필터링
+    // useEffect(() => {
+    //     const regionFilteredPosts =
+    //         activeRegion === "전체"
+    //             ? initialPosts
+    //             : initialPosts.filter((post) => post.region === activeRegion);
+
+    //     const searchFilteredPosts = regionFilteredPosts.filter((post) =>
+    //         post.title.toLowerCase().includes(searchTerm.toLowerCase())
+    //     );
+
+    //     setFilteredPosts(searchFilteredPosts);
+    // }, [activeRegion, searchTerm]); // activeRegion 또는 searchTerm 변경 시 실행
 
     // 지역 버튼 클릭 핸들러
     const handleRegionClick = (region) => {
         setActiveRegion(region);
+        fetchPosts(region);
     };
 
     // 글 작성하기 버튼 클릭 핸들러

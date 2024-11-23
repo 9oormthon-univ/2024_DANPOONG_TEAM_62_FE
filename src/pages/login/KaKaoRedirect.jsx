@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import apiClient from '../../api/apiClient';
 import { useLocation, useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 const KaKaoRedirect = () => {
     const navigate = useNavigate();
@@ -11,9 +12,9 @@ const KaKaoRedirect = () => {
         const handleKakaoLogin = async () => {
             try {
                 console.log("Code from Kakao Redirect URL:", code);
-                const response = await apiClient.get(`/callback?code=${code}`)
-    
-                console.log('로그인 성공:', response.data);
+                // const response = await apiClient.get(`/callback?code=${code}`)
+                const response = await axios.get(`http://43.202.0.199:8080/callback?code=${code}`);
+                console.log('로그인 성공:', response);
                 
             } catch (error) {
                 console.log(error);
