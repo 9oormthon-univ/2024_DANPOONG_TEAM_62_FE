@@ -122,9 +122,11 @@ S.PaginationContainer = styled.div`
 
 S.PageButton = styled.button`
     ${b2}
+    ${flexCenter}
     padding: 0% 9px;
-    /* width:30px; */
-    /* height:30px; */
+    /* 숫자 길이에 따른 크기 조정 */
+    width: 30px;
+    height:30px;
     border-radius: 50%;
     border: none;
     background-color: #D9D9D9;
@@ -136,4 +138,5 @@ S.PageButton = styled.button`
     isActive ? 'white' : 'black'};
     
 `;
+
 export default S;

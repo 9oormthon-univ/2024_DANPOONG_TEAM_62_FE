@@ -10,7 +10,7 @@ const Education = () => {
     const [currentPage, setCurrentPage] = useState(0); // 현재 페이지
     const [totalPages, setTotalPages] = useState(1); // 전체 페이지 수
     const [currentPageGroup, setCurrentPageGroup] = useState(0); // 페이지 그룹
-    const pageGroupSize = 5; // 페이지 그룹 크기
+    const pageGroupSize = 10; // 페이지 그룹 크기
     const navigate=useNavigate();
     
     // 현재 날짜 가져오기
