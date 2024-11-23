@@ -1,14 +1,35 @@
-import React from "react";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./Main.css";
 
 // 검색
 function SearchArea() {
+  const [searchTerm, setSearchTerm] = useState("");
+  const navigate = useNavigate();
+
+  const handleSearch = () => {
+    if (!searchTerm.trim()) {
+      alert("검색어를 입력해주세요.");
+      return;
+    }
+    // 검색어와 함께 Gemini 페이지로 이동
+    navigate("/info/chat", { state: { searchTerm } }); // /info/chat 경로로 이동
+  };
+
   return (
     <div className="searchArea">
-      <h2>gemini에게 질문하세요!</h2>
+      <h2>Gemini에게 질문하세요!</h2>
       <div className="searchBar">
-        <input type="text" placeholder="검색어를 입력하세요..." />
-        <button>🔍</button>
+        <input
+          type="text"
+          placeholder="검색어를 입력하세요..."
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          onKeyDown={(e) => {
+            if (e.key === "Enter") handleSearch(); // Enter 키로 검색 실행
+          }}
+        />
+        <button onClick={handleSearch}>🔍</button>
       </div>
     </div>
   );
@@ -45,14 +66,14 @@ function BoardSection() {
 
   return (
     <div className="board-section">
-     <div className="board-column">
-      <h3 className="section-title">best</h3> {/* 섹션 제목에 클래스 추가 */}
-      <div className="card-grid">
-       {bestCards.map((card, index) => (
-        <Card key={index} {...card} />
-    ))}
-  </div>
-</div>
+      <div className="board-column">
+        <h3 className="section-title">best</h3>
+        <div className="card-grid">
+          {bestCards.map((card, index) => (
+            <Card key={index} {...card} />
+          ))}
+        </div>
+      </div>
       <div className="board-column">
         <h3 className="section-title">최신 정보</h3>
         <div className="card-grid">
