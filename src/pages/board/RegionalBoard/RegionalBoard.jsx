@@ -81,24 +81,31 @@ const RegionalBoard = () => {
             </div>
 
             {/* 게시글 목록 */}
-            <div className="post-list">
-                {filteredPosts.length > 0 ? (
-                    filteredPosts.map((post, index) => (
-                        <div key={index} className="post-item">
-                            <h3 className="post-title">{post.title}</h3>
-                            <div className="post-meta">
-                                <span>❤️ {post.likes}</span>
-                                <span>💬 {post.comments}</span>
-                            </div>
-                            <div className="post-info">
-                                작성일 : {post.date} | 작성자 : {post.user}
-                            </div>
-                        </div>
-                    ))
-                ) : (
-                    <div className="no-posts">선택한 지역에 게시물이 없습니다.</div>
-                )}
-            </div>
+            {/* 게시글 목록 */}
+<div className="post-list">
+    {filteredPosts.length > 0 ? (
+        filteredPosts.map((post, index) => (
+            <Link
+                key={index}
+                to="/board/detail"
+                state={{ post }} // 게시글 데이터 전달
+                className="post-item"
+            >
+                <h3 className="post-title">{post.title}</h3>
+                <div className="post-meta">
+                    <span>❤️ {post.likes}</span>
+                    <span>💬 {post.comments}</span>
+                </div>
+                <div className="post-info">
+                    작성일 : {post.date} | 작성자 : {post.user}
+                </div>
+            </Link>
+        ))
+    ) : (
+        <div className="no-posts">선택한 지역에 게시물이 없습니다.</div>
+    )}
+</div>
+
 
             {/* 푸터 영역 */}
             <footer className="footer">
