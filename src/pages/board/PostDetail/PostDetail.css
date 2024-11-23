@@ -72,7 +72,6 @@ body {
 }
 
 .post-date {
-    font-style: italic;
     color: #999;
 }
 
@@ -99,6 +98,15 @@ body {
 }
 
 .comments-count {
-    color: #4caf50; /* 초록색 */
+    color: #94bc80; /* 초록색 */
     font-weight: bold;
+}
+.add-comment-button {
+    padding: 10px 20px;
+    background-color: #94bc80; /* 기존 배경색 */
+    color: #ffffff; /* 기존 글자색 */
+    border: none;
+    border-radius: 10px;
+    font-size: 14px;
+    cursor: pointer;
 }

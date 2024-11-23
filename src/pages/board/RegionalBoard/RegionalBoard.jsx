@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import "./RegionalBoard.css";
 
@@ -6,20 +6,37 @@ const RegionalBoard = () => {
     const location = useLocation();
     const navigate = useNavigate();
 
-    // 활성화된 지역 버튼을 추적하기 위한 state
+    // 지역 및 검색 상태
     const [activeRegion, setActiveRegion] = useState("전체");
+    const [searchTerm, setSearchTerm] = useState(""); // 검색어 상태
 
     // 게시글 데이터
-    const posts = [
+    const initialPosts = [
         { title: "경기도 게시글 1", likes: 50, comments: 20, date: "2024-11-17", user: "user1", region: "경기도" },
         { title: "강원도 게시글 1", likes: 80, comments: 35, date: "2024-11-18", user: "user2", region: "강원도" },
         { title: "충청북도 게시글 1", likes: 100, comments: 50, date: "2024-11-19", user: "user3", region: "충청북도" },
         { title: "경기도 게시글 2", likes: 20, comments: 5, date: "2024-11-20", user: "user4", region: "경기도" },
     ];
 
+    const [filteredPosts, setFilteredPosts] = useState(initialPosts);
+
+    // 검색어 또는 지역이 변경될 때 게시글 필터링
+    useEffect(() => {
+        const regionFilteredPosts =
+            activeRegion === "전체"
+                ? initialPosts
+                : initialPosts.filter((post) => post.region === activeRegion);
+
+        const searchFilteredPosts = regionFilteredPosts.filter((post) =>
+            post.title.toLowerCase().includes(searchTerm.toLowerCase())
+        );
+
+        setFilteredPosts(searchFilteredPosts);
+    }, [activeRegion, searchTerm]); // activeRegion 또는 searchTerm 변경 시 실행
+
     // 지역 버튼 클릭 핸들러
     const handleRegionClick = (region) => {
-        setActiveRegion(region); // 활성화된 버튼 설정
+        setActiveRegion(region);
     };
 
     // 글 작성하기 버튼 클릭 핸들러
@@ -31,9 +48,6 @@ const RegionalBoard = () => {
             },
         });
     };
-
-    // 활성화된 지역에 따라 게시글 필터링
-    const filteredPosts = activeRegion === "전체" ? posts : posts.filter((post) => post.region === activeRegion);
 
     return (
         <div className="general-board-container">
@@ -60,8 +74,13 @@ const RegionalBoard = () => {
                     </Link>
                 </div>
                 <div className="searchBar">
-                    <input type="text" className="search-bar" placeholder="검색어를 입력하세요" />
-                    <button className="search-button">🔍</button>
+                    <input
+                        type="text"
+                        className="search-bar"
+                        placeholder="검색어를 입력하세요"
+                        value={searchTerm}
+                        onChange={(e) => setSearchTerm(e.target.value)}
+                    />
                 </div>
             </div>
 
@@ -81,31 +100,29 @@ const RegionalBoard = () => {
             </div>
 
             {/* 게시글 목록 */}
-            {/* 게시글 목록 */}
-<div className="post-list">
-    {filteredPosts.length > 0 ? (
-        filteredPosts.map((post, index) => (
-            <Link
-                key={index}
-                to="/board/detail"
-                state={{ post }} // 게시글 데이터 전달
-                className="post-item"
-            >
-                <h3 className="post-title">{post.title}</h3>
-                <div className="post-meta">
-                    <span>❤️ {post.likes}</span>
-                    <span>💬 {post.comments}</span>
-                </div>
-                <div className="post-info">
-                    작성일 : {post.date} | 작성자 : {post.user}
-                </div>
-            </Link>
-        ))
-    ) : (
-        <div className="no-posts">선택한 지역에 게시물이 없습니다.</div>
-    )}
-</div>
-
+            <div className="post-list">
+                {filteredPosts.length > 0 ? (
+                    filteredPosts.map((post, index) => (
+                        <Link
+                            key={index}
+                            to="/board/detail"
+                            state={{ post }} // 게시글 데이터 전달
+                            className="post-item"
+                        >
+                            <h3 className="post-title">{post.title}</h3>
+                            <div className="post-meta">
+                                <span>❤️ {post.likes}</span>
+                                <span>💬 {post.comments}</span>
+                            </div>
+                            <div className="post-info">
+                                작성일 : {post.date} | 작성자 : {post.user}
+                            </div>
+                        </Link>
+                    ))
+                ) : (
+                    <div className="no-posts">선택한 지역에 게시물이 없습니다.</div>
+                )}
+            </div>
 
             {/* 푸터 영역 */}
             <footer className="footer">
