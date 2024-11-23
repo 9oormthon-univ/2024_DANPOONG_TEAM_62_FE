@@ -5,6 +5,9 @@ import { useNavigate } from 'react-router-dom';
 
 const User = () => {
     const navigate = useNavigate();
+    const userId=localStorage.getItem("userId");
+    const profile=localStorage.getItem("profile");
+    const name=localStorage.getItem("name");
 
     // 로그아웃 요청
     const handleLogout = async () => {
@@ -12,7 +15,7 @@ const User = () => {
 
         try {
             
-            const response=await apiClient.post('/logout', { accessToken });
+            const response=await apiClient.get('/logout', { accessToken });
             console.log(response);
             localStorage.removeItem('accessToken'); 
             alert("로그아웃 되었습니다.");
@@ -48,8 +51,8 @@ const User = () => {
     return (
         <>
             <S.User>
-                <img src={process.env.PUBLIC_URL + '/global/images/userProfile/profileImage.png'} alt="프로필 이미지" />
-                <div>이름</div>
+                <img src={profile} alt="프로필 이미지" />
+                <div>{name}</div>
             </S.User>
             <S.Kakao>
                 <S.LogoutButton onClick={handleLogout}>로그아웃</S.LogoutButton>

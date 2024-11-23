@@ -21,9 +21,10 @@ const Header = () => {
     };
     
     const handleProfileClick = () => {
-        const accessToken = localStorage.getItem('accessToken'); // 로컬스토리지에서 액세스 토큰 확인
-
-        if (!accessToken) {
+        const userId = localStorage.getItem('userId');
+        // const accessToken = localStorage.getItem('accessToken'); // 로컬스토리지에서 액세스 토큰 확인
+        // localStorage.removeItem('accessToken')
+        if (!userId) {
             // 토큰이 없으면 알림을 띄우고 로그인 페이지로 이동
             alert('로그인이 필요합니다.');
             navigate('/oauth'); // 리다이렉트

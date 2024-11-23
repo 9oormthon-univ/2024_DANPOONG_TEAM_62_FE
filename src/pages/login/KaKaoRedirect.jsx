@@ -14,7 +14,14 @@ const KaKaoRedirect = () => {
                 console.log("Code from Kakao Redirect URL:", code);
                 // const response = await apiClient.get(`/callback?code=${code}`)
                 const response = await axios.get(`http://43.202.0.199:8080/callback?code=${code}`);
-                console.log('로그인 성공:', response);
+                
+                console.log('로그인 성공:', response.data);
+                const accessToken = response.headers['authorization'] || response.headers['Authorization'];
+                localStorage.setItem("userId", response.data.userId);
+                localStorage.setItem("profile", response.data.profileImageUrl);
+                localStorage.setItem("name", response.data.name);
+
+                navigate('/')
                 
             } catch (error) {
                 console.log(error);
