@@ -3,7 +3,7 @@ import S from './style';
 
 const Login = () => {
     const REST_API_KEY = "d09dae9ffe4485ad461dc7f5c1e3e036";
-    const REDIRECT_URI = 'https://summer-buddy.vercel.app/oauth/kakao/callback';
+    const REDIRECT_URI = 'http://localhost:3001/oauth/kakao/callback';
     const link = `https://kauth.kakao.com/oauth/authorize?client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}&response_type=code`;
     
     const loginHandler = () => {
