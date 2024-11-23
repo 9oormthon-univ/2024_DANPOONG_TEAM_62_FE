@@ -2,7 +2,7 @@ import React from 'react';
 import S from './style';
 
 const Login = () => {
-    const REST_API_KEY = process.env.REACT_APP_REST_API_KEY;
+    const REST_API_KEY = "d09dae9ffe4485ad461dc7f5c1e3e036";
     const REDIRECT_URI = 'http://localhost:3003/oauth/kakao/callback';
     const link = `https://kauth.kakao.com/oauth/authorize?client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}&response_type=code`;
     
