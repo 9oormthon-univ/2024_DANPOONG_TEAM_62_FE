@@ -8,6 +8,7 @@ const Header = () => {
     const [isdropdownopen, setIsDropdownOpen] = useState(false);
     const [isVisible, setIsVisible] = useState(false);
     const location = useLocation();
+    const navigate = useNavigate();
 
     const handleMouseEnter = () => {
       setIsDropdownOpen(true);
@@ -20,7 +21,16 @@ const Header = () => {
     };
     
     const handleProfileClick = () => {
-        setIsVisible((prevState) => !prevState);
+        const accessToken = localStorage.getItem('accessToken'); // 로컬스토리지에서 액세스 토큰 확인
+
+        if (!accessToken) {
+            // 토큰이 없으면 알림을 띄우고 로그인 페이지로 이동
+            alert('로그인이 필요합니다.');
+            navigate('/oauth'); // 리다이렉트
+        } else {
+            // 토큰이 있을 경우 프로필 메뉴를 토글
+            setIsVisible((prevState) => !prevState);
+        }
     };
 
     useEffect(() => {
