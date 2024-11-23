@@ -3,7 +3,7 @@ import { GoogleGenerativeAI } from "@google/generative-ai";
 import S from './style';
 import ReactMarkdown from "react-markdown";
 
-const API_KEY = "AIzaSyCNqQOlZWlx5ip5hOxcvxnKWsfr7Q0fKig"; // 실제 API 키를 넣으세요
+const API_KEY = "AIzaSyCNqQOlZWlx5ip5hOxcvxnKWsfr7Q0fKig"; 
 const genAI = new GoogleGenerativeAI(API_KEY);
 
 const Gemini = () => {

@@ -3,7 +3,9 @@ import S from './style';
 import { useNavigate } from 'react-router-dom';
 
 const Education = () => {
-    const YOUNG_FARMER_API_KEY= process.env.REACT_APP_YOUNG_FARMER_API_KEY;
+    // const YOUNG_FARMER_API_KEY= process.env.REACT_APP_YOUNG_FARMER_API_KEY;
+    const YOUNG_FARMER_API_KEY="PdNrP5LqaL3z2dqsOzW9yUG%2BFGiTXklB3wanUqSbFLUB5hLJLHGxF%2BtpnLdPmL1p%2BQOzkikq9w3VlwtSySFwIA%3D%3D";
+
     const [eduLists, setEduLists] = useState([]); //전체 목록
     const [filteredEduLists, setFilteredEduLists] = useState([]); //검색 결과
     const [searchTerm, setSearchTerm] = useState(''); // 검색어
