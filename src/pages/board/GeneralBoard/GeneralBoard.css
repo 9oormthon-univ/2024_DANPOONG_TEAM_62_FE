@@ -1,6 +1,7 @@
 /* 전체 컨테이너 */
 .general-board-container {
   width: 100vw;
+  background-color: #F1ECE0;
   margin: 0 auto;
   padding: 20px;
   font-family: Arial, sans-serif;

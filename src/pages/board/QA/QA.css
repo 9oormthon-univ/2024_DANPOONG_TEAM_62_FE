@@ -1,6 +1,8 @@
 /* 전체 컨테이너 */
 .qa-container {
     width: 100vw;
+    height: 50vw;
+    background-color: #F1ECE0;
     margin: 0 auto;
     padding: 20px;
     font-family: Arial, sans-serif;
