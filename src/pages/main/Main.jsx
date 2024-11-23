@@ -36,15 +36,18 @@ function SearchArea() {
 }
 
 // 카드 컴포넌트
-function Card2({ title, content, likes,createdAt }) {
+function Card2({ title, content, likes,createdAt,name }) {
   return (
     <div className="card">
       <h3>{title}</h3>
       <p>{content}</p>
+      <div>❤️ {likes}</div>
       <div className="card-footer">
-        <span>❤️ {likes}</span>
-      </div>
+      <div>{name}</div>
       <div>{createdAt}</div>
+      </div>
+      
+
     </div>
   );
 }
@@ -98,10 +101,10 @@ function BoardSection() {
   }, []);
 
   const bestCards = [
-    { title: "제목", content:"내용입니다...............", likes:3, createdAt:"2024-11-23" },
-    { title: "제목", content:"내용입니다...............", likes:3, createdAt:"2024-11-23" },
-    { title: "제목", content:"내용입니다...............", likes:3, createdAt:"2024-11-23" },
-    { title: "제목", content:"내용입니다...............", likes:3, createdAt:"2024-11-23" },
+    { title: "날씨", content:"오늘은 농사하기 좋은 날씨구먼...", likes:3, createdAt:"2024-11-23", name:"요정" },
+    { title: "제목", content:"내용입니다...............", likes:25, createdAt:"2024-11-23", name:"민정" },
+    { title: "제목", content:"내용입니다...............", likes:12, createdAt:"2024-11-23", name:"강정" },
+    { title: "제목", content:"내용입니다...............", likes:8, createdAt:"2024-11-23", name:"남정" },
   ];
 
   // 글 클릭 시 상세보기 페이지로 이동

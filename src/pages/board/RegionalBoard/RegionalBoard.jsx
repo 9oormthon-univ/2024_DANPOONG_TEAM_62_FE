@@ -15,7 +15,14 @@ const RegionalBoard = () => {
         { title: "경기도 게시글 1", likes: 50, comments: 20, date: "2024-11-17", user: "user1", region: "경기도" },
         { title: "강원도 게시글 1", likes: 80, comments: 35, date: "2024-11-18", user: "user2", region: "강원도" },
         { title: "충청북도 게시글 1", likes: 100, comments: 50, date: "2024-11-19", user: "user3", region: "충청북도" },
-        { title: "경기도 게시글 2", likes: 20, comments: 5, date: "2024-11-20", user: "user4", region: "경기도" },
+        { title: "충청남도 게시글 1", likes: 20, comments: 5, date: "2024-11-20", user: "user4", region: "충청남도" },
+        { title: "제주도 게시글 2", likes: 20, comments: 7, date: "2024-11-20", user: "user4", region: "제주도" },
+        { title: "전라남도 게시글 1", likes: 120, comments: 5, date: "2024-11-21", user: "user4", region: "전라남도" },
+        { title: "전라남도 게시글 2", likes: 20, comments: 75, date: "2024-11-22", user: "user4", region: "전라남도" },
+        { title: "전라남도 게시글 3", likes: 20, comments: 25, date: "2024-11-23", user: "user4", region: "전라남도" },
+        { title: "안녕하세요", likes: 20, comments: 25, date: "2024-11-23", user: "user4", region: "경상북도" },
+        { title: "오늘", likes: 20, comments: 25, date: "2024-11-23", user: "user4", region: "경상남도" },
+        { title: "날씨가 좋네요", likes: 20, comments: 25, date: "2024-11-23", user: "user4", region: "전라북도" },
     ];
 
     const [filteredPosts, setFilteredPosts] = useState(initialPosts);
