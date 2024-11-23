@@ -13,7 +13,7 @@ const KaKaoRedirect = () => {
             try {
                 console.log("Code from Kakao Redirect URL:", code);
                 // const response = await apiClient.get(`/callback?code=${code}`)
-                const response = await axios.get(`http://43.202.0.199:8080/callback?code=${code}`);
+                const response = await axios.get(`http://13.124.70.113:8080/callback?code=${code}`);
                 
                 console.log('로그인 성공:', response.data);
                 const accessToken = response.headers['authorization'] || response.headers['Authorization'];
